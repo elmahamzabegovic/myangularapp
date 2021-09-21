@@ -1,0 +1,33 @@
+<div class="container"> 
+    <form #drzavaForma="ngForm" (ngSubmit)="onSubmit(drzavaForma)">
+        <div>
+            <input required minlength="3" placeholder="Unesite naziv drzave" type="text" name="naziv" ngModel>
+        </div>
+        <button type="submit" [disabled]="!drzavaForma.valid" class="btn btn-primary">Pretrazi</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Naziv</th>
+                <th>Alfa3 kod</th>
+                <th>Regija</th>
+                <th>Broj stanovnika</th>
+                <th>Glavni grad</th>
+                <th>Povrsina</th>
+                <th>Zastava</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let drzava of drzave">
+                <td>{{ drzava.name }}</td>
+                <td>{{ drzava.alpha3Code }}</td>
+                <td>{{ drzava.region }}</td>
+                <td>{{ drzava.population | number }}</td>
+                <td>{{ drzava.capital }}</td>
+                <td>{{ drzava.area | number }}</td>
+                <td><img src="{{ drzava.flag }}" style="height: 40px;"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

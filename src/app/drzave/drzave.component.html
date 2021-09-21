@@ -1,0 +1,53 @@
+<div class="alert alert-danger alert-dismissible fade show" *ngIf="greska">
+    <p>{{ greska }}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<div class="container">
+
+    <div class="alert alert-success alert-dismissible fade show" *ngIf="uspjeh">
+        <p>{{ uspjeh }}</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <div class="container">
+
+<button class="btn btn-info" *ngFor="let regija of regije" (click)="filtritajRegije(regija)">{{ regija }}</button><br>
+<label>Ukupan br stanonika:</label>
+<p>{{ ukupanBrStanovnika | number }}</p>
+
+<label>Ukupna povrsina:</label>
+<p>{{ ukupnaPovrsina | number }}</p>
+
+<div>
+    <input type="text" [(ngModel)]="terminZaPretragu" (ngModelChange)="pretraga($event)">
+    <button class="btn btn-primary" (click)="filtriraj()">Pretrazi</button>
+    <button class="btn btn-primary" (click)="ponistiPretragu()">Ponisti pretragu</button>
+</div>
+
+
+<button class="btn btn-primary" (click)="sortiraj()">Sortiraj po imenu</button>
+<button class="btn btn-success" (click)="sortirajBrStanovnika()">Sortiraj po broj st.</button>
+<table class="table table-striped">
+
+    <thead>
+        <th>Ime</th>
+        <th>Alpha 3 Code</th>
+        <th>Regija</th>
+        <th>Br stanovnika</th>
+        <th>Glavni grad</th>
+        <th>Povrsina</th>
+        <th>Zastava</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let drzava of listaDrzavaZaDisplay" [ngClass]="{'preko300': drzava.population > 300000000, 'table-success': drzava.capital === 'Beijing'}">
+            <td>{{ drzava.name }}</td>
+            <td>{{ drzava.alpha3Code }}</td>
+            <td>{{ drzava.region }}</td>
+            <td>{{ drzava.population | number }}</td>
+            <td>{{ drzava.capital }}</td>
+            <td>{{ drzava.area }}</td>
+            <td><img src="{{ drzava.flag }}" height="40px"></td>
+        </tr>
+    </tbody>
+</table>
+</div>
