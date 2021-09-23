@@ -9,6 +9,7 @@ import { Zaposleni } from '../zaposleni';
 })
 export class ApiService {
 
+  key = '?api_key=33a5f6cb-52ae-4bcd-9e39-f5eee3cca367';
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +24,10 @@ export class ApiService {
 
    public postZaposleni(zaposleniForm: Zaposleni) { 
      return this.http.post('https://www.angular-kurs.online/api/zaposlenici', zaposleniForm)
+   }
+
+   public getCats() {
+     return this.http.get('https://api.thecatapi.com/v1/breeds' + this.key);
    }
 
    public getZaposleni(): Observable<Zaposleni[]> {

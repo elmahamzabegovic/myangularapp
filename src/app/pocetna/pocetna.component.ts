@@ -5,7 +5,7 @@ import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './pocetna.component.html',
   styleUrls: ['./pocetna.component.scss']
 })
-export class PocetnaComponent implements OnInit, OnDestroy {
+export class PocetnaComponent implements OnInit {
 
   brojevi: number[] = [1,2,3,4,5];
    // brojevi: number[] = [];
